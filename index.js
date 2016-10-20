@@ -1,3 +1,5 @@
 module.exports = {
-  console.log('woo');
+  test: function(foo) {
+    return foo;
+  }
 }
