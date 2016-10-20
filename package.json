@@ -1,0 +1,14 @@
+{
+  "name": "pad-19-scheduler",
+  "version": "0.0.0",
+  "description": "A tool for generating schedules based on data.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "schedules"
+  ],
+  "author": "Peter Ramsing <hi@peterramsing.com> (http://peter.coffee)",
+  "license": "MIT"
+}
