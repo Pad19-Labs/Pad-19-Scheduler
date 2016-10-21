@@ -34,3 +34,16 @@ describe('initial test passes', function() {
     expect(testFunction).to.equal(testString);
   });
 })
+
+describe('an array of survey results should return an object with each tabulated', function() {
+
+  it('should count the results', function() {
+    let totalResultsFunction = scheduler.surveyTools.totalResults(exampleSurveyResults);
+    expect(totalResultsFunction).to.equal(exampleSurveyResultsTabulates.totalResults);
+  });
+
+  it('should return count as a number', function() {
+    let totalResultsFunction = scheduler.surveyTools.totalResults(exampleSurveyResults);
+    expect(totalResultsFunction).to.be.a('number');
+  })
+})
