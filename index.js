@@ -5,11 +5,7 @@ module.exports = {
 
   surveyTools: {
     totalResults: function(surveyResults) {
-      let totalCount = 0;
-      for (var i = 0; i < surveyResults.length; i++) {
-        totalCount++;
-      }
-      return totalCount;
+      return surveyResults.length;
     }
   }
 }

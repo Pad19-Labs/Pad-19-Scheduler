@@ -5,7 +5,7 @@ const exampleSurveyResults = [
   [ 'rowing', 'running', 'cycling' ],
   [ 'skiing', 'running', 'rowing' ],
   [ 'other', 'hiking', 'cycling' ],
-  [ 'reading', 'skiing', 'cycling']
+  [ 'reading', 'skiing', 'cycling' ]
 ];
 
 const exampleSurveyResultsTabulates = {
