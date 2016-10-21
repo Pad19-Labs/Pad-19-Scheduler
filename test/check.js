@@ -8,7 +8,7 @@ const exampleSurveyResults = [
   [ 'reading', 'skiing', 'cycling' ]
 ];
 
-const exampleSurveyResultsTabulates = {
+const exampleSurveyResultsTabulated = {
   totalResults: 7,
   individualResults : {
     skiing: 3,
@@ -39,7 +39,7 @@ describe('an array of survey results should return an object with each tabulated
 
   it('should count the results', function() {
     let totalResultsFunction = scheduler.surveyTools.totalResults(exampleSurveyResults);
-    expect(totalResultsFunction).to.equal(exampleSurveyResultsTabulates.totalResults);
+    expect(totalResultsFunction).to.equal(exampleSurveyResultsTabulated.totalResults);
   });
 
   it('should return count as a number', function() {
