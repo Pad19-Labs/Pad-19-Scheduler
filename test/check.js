@@ -33,7 +33,7 @@ describe('initial test passes', function() {
     let testFunction = test(testString);
     expect(testFunction).to.equal(testString);
   });
-})
+});
 
 describe('an array of survey results should return an object with each tabulated', function() {
 
@@ -46,4 +46,4 @@ describe('an array of survey results should return an object with each tabulated
     let totalResultsFunction = scheduler.surveyTools.totalResults(exampleSurveyResults);
     expect(totalResultsFunction).to.be.a('number');
   })
-})
+});
