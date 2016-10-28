@@ -22,6 +22,25 @@ const exampleSurveyResultsTabulated = {
   }
 }
 
+const exampleSpeakerList = [
+  { 'speaker1': [ 'skiing', 'running']},
+  { 'speaker2': [ 'reading' ]},
+  { 'speaker3': [ 'rowing' ]},
+  { 'speaker4': [ 'reading', 'cycling' ]},
+  { 'speaker5': [ 'cycling', 'cooking' ]}
+];
+
+const exampleSpeakerListAvailable = {
+  duplicates: 2,
+  assignments: {
+    speaker1: [ 'skiing', 'running'],
+    speaker2: [ 'reading' ],
+    speaker3: [ 'rowing' ],
+    speaker4: [ 'cycling' ],
+    speaker5: [ 'cooking' ]
+  }
+};
+
 let expect    = require('chai').expect;
 
 let scheduler = require('../index.js');
@@ -74,4 +93,25 @@ describe('return a count of each type of result', function() {
     expect(trfRedable).to.have.deep.property('rowing', 2);
   });
 
+});
+
+describe('should determine what speaker should speak if there is a duplicate', function() {
+  let gsa = scheduler.surveyTools.getSpeakerAssingments;
+
+  it('should count the duplicates', function() {
+    expect(gsa.countDuplicates(exampleSpeakerList)).to.equal(2);
+  })
+
+  // it('should just let those with one subject talk on that subject', function() {
+  //   expect(gsa).to.have.deep.property('speaker2', [ 'reading' ]);
+  //   expect(gsa).to.have.deep.property('speaker3', [ 'rowing' ]);
+  // });
+
+  // it('should return correct speaker for duplicates', function() {
+  //   expect(gsa).to.have.deep.property('speaker1', [ 'skiing', 'running' ]);
+  //   expect(gsa).to.have.deep.property('speaker2', [ 'reading' ]);
+  //   expect(gsa).to.have.deep.property('speaker3', [ 'rowing' ]);
+  //   expect(gsa).to.have.deep.property('speaker4', [ 'cycling' ]);
+  //   expect(gsa).to.have.deep.property('speaker5', [ 'cooking' ]);
+  // });
 });

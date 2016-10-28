@@ -28,6 +28,34 @@ module.exports = {
         }
       }
       return counts;
+    },
+    getSpeakerAssingments: {
+      countDuplicates: function(speakersArray) {
+
+        let duplicates = 0;
+        let subjectsArray = [];
+
+        for (let i = 0; i < speakersArray.length; i++) {
+
+          let speakerObject = speakersArray[i];
+          for (speaker in speakerObject) {
+            speakerTalks = speakerObject[speaker];
+            console.log(speakerTalks);
+
+            for (let i = 0; i < speakerTalks.length; i++) {
+              if (subjectsArray.includes(speakerTalks[i])) {
+                  console.log('foo');
+                  duplicates++;
+              } else {
+                console.log('bar');
+                subjectsArray.push(speakerTalks[i]);
+
+              }
+            }
+          }
+        }
+        return duplicates;
+      }
     }
   }
 }
