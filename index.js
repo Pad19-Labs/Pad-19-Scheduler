@@ -39,7 +39,7 @@ module.exports = {
 
           let speakerObject = speakersArray[i];
           for (speaker in speakerObject) {
-            speakerTalks = speakerObject[speaker];
+            let speakerTalks = speakerObject[speaker];
             for (let i = 0; i < speakerTalks.length; i++) {
               if (subjectsArray.includes(speakerTalks[i])) {
                   duplicates++;
