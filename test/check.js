@@ -46,31 +46,31 @@ let expect    = require('chai').expect;
 let scheduler = require('../index.js');
 let test = scheduler.test;
 
-describe('initial test passes', function() {
-  it('should return value given', function() {
+describe('initial test passes', () => {
+  it('should return value given', () => {
     let testString = 'testing';
     let testFunction = test(testString);
     expect(testFunction).to.equal(testString);
   });
 });
 
-describe('an array of survey results should return an object with each tabulated', function() {
+describe('an array of survey results should return an object with each tabulated', () => {
 
-  it('should count the results', function() {
+  it('should count the results', () => {
     let totalResultsFunction = scheduler.surveyTools.totalResults(exampleSurveyResults);
     expect(totalResultsFunction).to.equal(exampleSurveyResultsTabulated.totalResults);
   });
 
-  it('should return count as a number', function() {
+  it('should return count as a number', () => {
     let totalResultsFunction = scheduler.surveyTools.totalResults(exampleSurveyResults);
     expect(totalResultsFunction).to.be.a('number');
   })
 });
 
-describe('return a count of each type of result', function() {
+describe('return a count of each type of result', () => {
   let trf = scheduler.surveyTools.tabulateResults(exampleSurveyResults);
 
-  it('should count how many people like one thing', function() {
+  it('should count how many people like one thing', () => {
     expect(trf).to.have.deep.property('skiing', 2);
     expect(trf).to.have.deep.property('hiking', 1);
     expect(trf).to.have.deep.property('cycling', 4);
@@ -82,7 +82,7 @@ describe('return a count of each type of result', function() {
   });
 
   let trfRedable = scheduler.surveyTools.tabulateResults(exampleSurveyResults, true);
-  it('should return human readable numbers if asked for', function() {
+  it('should return human readable numbers if asked for', () => {
     expect(trfRedable).to.have.deep.property('skiing', 3);
     expect(trfRedable).to.have.deep.property('hiking', 2);
     expect(trfRedable).to.have.deep.property('cycling', 5);
@@ -95,10 +95,10 @@ describe('return a count of each type of result', function() {
 
 });
 
-describe('should determine what speaker should speak if there is a duplicate', function() {
+describe('should determine what speaker should speak if there is a duplicate', () => {
   let gsa = scheduler.surveyTools.getSpeakerAssingments;
 
-  it('should count the duplicates', function() {
+  it('should count the duplicates', () => {
     expect(gsa.countDuplicates(exampleSpeakerList)).to.equal(2);
   });
 
