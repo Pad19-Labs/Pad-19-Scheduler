@@ -100,12 +100,12 @@ describe('should determine what speaker should speak if there is a duplicate', f
 
   it('should count the duplicates', function() {
     expect(gsa.countDuplicates(exampleSpeakerList)).to.equal(2);
-  })
+  });
 
-  // it('should just let those with one subject talk on that subject', function() {
-  //   expect(gsa).to.have.deep.property('speaker2', [ 'reading' ]);
-  //   expect(gsa).to.have.deep.property('speaker3', [ 'rowing' ]);
-  // });
+  it('should just let those with one subject talk on that subject', function() {
+    expect(gsa.filterForDuplicates(exampleSpeakerList)).property('speaker2').to.eql([ 'reading' ]);
+    expect(gsa.filterForDuplicates(exampleSpeakerList)).property('speaker3').to.eql([ 'rowing' ]);
+  });
 
   // it('should return correct speaker for duplicates', function() {
   //   expect(gsa).to.have.deep.property('speaker1', [ 'skiing', 'running' ]);

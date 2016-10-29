@@ -50,6 +50,22 @@ module.exports = {
           }
         }
         return duplicates;
+      },
+      filterForDuplicates: function (speakersArray) {
+        let speakerAssignments = {};
+
+        for (let i = 0; i < speakersArray.length; i++) {
+          let speakerObject = speakersArray[i];
+          for (speaker in speakerObject) {
+            let speakerTalks = speakerObject[speaker]
+            if (speakerTalks.length > 1) {
+              // do something
+            } else {
+              speakerAssignments[speaker] = speakerTalks
+            }
+          }
+        }
+        return speakerAssignments;
       }
     }
   }
