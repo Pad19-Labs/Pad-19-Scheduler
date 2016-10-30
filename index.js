@@ -7,7 +7,7 @@ module.exports = {
     totalResults: function(surveyResults) {
       return surveyResults.length;
     },
-    tabulateResults: function(resultsArray, humanReadable) {
+    tabulateResults: function(resultsArray, humanReadable = false) {
       let counts = {};
 
       for (let i = 0; i < resultsArray.length; i++) {
@@ -42,7 +42,7 @@ module.exports = {
             let speakerTalks = speakerObject[speaker];
             for (let i = 0; i < speakerTalks.length; i++) {
               if (subjectsArray.includes(speakerTalks[i])) {
-                  duplicates++;
+                duplicates++;
               } else {
                 subjectsArray.push(speakerTalks[i]);
               }
@@ -57,11 +57,11 @@ module.exports = {
         for (let i = 0; i < speakersArray.length; i++) {
           let speakerObject = speakersArray[i];
           for (speaker in speakerObject) {
-            let speakerTalks = speakerObject[speaker]
+            let speakerTalks = speakerObject[speaker];
             if (speakerTalks.length > 1) {
               // do something
             } else {
-              speakerAssignments[speaker] = speakerTalks
+              speakerAssignments[speaker] = speakerTalks;
             }
           }
         }
