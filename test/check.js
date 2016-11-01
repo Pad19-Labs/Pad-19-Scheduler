@@ -1,11 +1,32 @@
 const exampleSurveyResults = [
-  [ 'skiing', 'hiking', 'cycling' ],
-  [ 'reading', 'cooking', 'cycling' ],
-  [ 'running', 'reading', 'other' ],
-  [ 'rowing', 'running', 'cycling' ],
-  [ 'skiing', 'running', 'rowing' ],
-  [ 'other', 'hiking', 'cycling' ],
-  [ 'reading', 'skiing', 'cycling' ]
+  { 'attendee1': {
+    surveyResults: [ 'skiing', 'hiking', 'cycling' ]
+    }
+  },
+  { 'attendee2': {
+    surveyResults: [ 'reading', 'cooking', 'cycling' ]
+    }
+  },
+  { 'attendee3': {
+    surveyResults: [ 'running', 'reading', 'other' ]
+    }
+  },
+  { 'attendee4': {
+    surveyResults: [ 'rowing', 'running', 'cycling' ]
+    }
+  },
+  { 'attendee5': {
+    surveyResults: [ 'skiing', 'running', 'rowing' ]
+    }
+  },
+  { 'attendee6': {
+    surveyResults: [ 'other', 'hiking', 'cycling' ]
+    }
+  },
+  { 'attendee7': {
+    surveyResults: [ 'reading', 'skiing', 'cycling']
+    }
+  }
 ];
 
 const exampleSurveyResultsTabulated = {
