@@ -1,31 +1,31 @@
 const exampleSurveyResults = [
-  { 'attendee1': {
+  {
+    id: 'attendee1',
     surveyResults: [ 'skiing', 'hiking', 'cycling' ]
-    }
   },
-  { 'attendee2': {
+  {
+    id: 'attendee2',
     surveyResults: [ 'reading', 'cooking', 'cycling' ]
-    }
   },
-  { 'attendee3': {
+  {
+    id: 'attendee3',
     surveyResults: [ 'running', 'reading', 'other' ]
-    }
   },
-  { 'attendee4': {
+  {
+    id: 'attendee4',
     surveyResults: [ 'rowing', 'running', 'cycling' ]
-    }
   },
-  { 'attendee5': {
+  {
+    id: 'attendee5',
     surveyResults: [ 'skiing', 'running', 'rowing' ]
-    }
   },
-  { 'attendee6': {
+  {
+    id: 'attendee6',
     surveyResults: [ 'other', 'hiking', 'cycling' ]
-    }
   },
-  { 'attendee7': {
+  {
+    id: 'attendee7',
     surveyResults: [ 'reading', 'skiing', 'cycling']
-    }
   }
 ];
 
