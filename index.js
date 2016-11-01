@@ -12,8 +12,18 @@ module.exports = {
 
       for (let i = 0; i < resultsArray.length; i++) {
         let resultArray = resultsArray[i];
-
+        for ( attendee in resultArray) {
+          let attendeeArray = resultArray[attendee].surveyResults;
+          for (let i = 0; i < attendeeArray.length; i++) {
+            result = attendeeArray[i];
+            if (counts.hasOwnProperty(result)) {
+              counts[result]++;
             } else {
+              if (humanReadable) {
+                counts[result] = 1;
+              } else {
+                counts[result] = 0;
+              }
             }
           }
         }
