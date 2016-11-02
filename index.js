@@ -67,5 +67,40 @@ module.exports = {
         return speakerAssignments;
       }
     }
+  },
+  scheduleTools: {
+    validateSchedule: function (schedule) {
+      let _s = schedule;
+      let returnValue = {
+        'valid': false,
+        'err': []
+      };
+      let _rve = returnValue.err;
+
+      // Event Type
+      if (_s.type === undefined) {
+        _rve.push(`There should be an event type.`);
+      }
+      if (typeof(_s.type) !== 'string') {
+        _rve.push(`Event type should be a string.`);
+      }
+      if (_s.type === '') {
+        _rve.push(`Event type shouldn't be an empty string.`);
+      }
+
+      // Name
+      if (_s.nameFirst === undefined) {
+        _rve.push(`The first and last name should be set.`);
+      }
+
+      if (!Array.isArray(_s.schedule)) {
+        _rve.push(`The schedule isn't an array.`);
+      }
+
+      if (_rve.length === 0) {
+        returnValue = true;
+      }
+      return returnValue;
+    }
   }
 }

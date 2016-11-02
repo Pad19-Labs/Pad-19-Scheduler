@@ -122,17 +122,55 @@ describe('should determine what speaker should speak if there is a duplicate', (
   it('should count the duplicates', () => {
     expect(gsa.countDuplicates(exampleSpeakerList)).to.equal(2);
   });
+});
 
-  it('should just let those with one subject talk on that subject', function() {
-    expect(gsa.filterForDuplicates(exampleSpeakerList)).property('speaker2').to.eql([ 'reading' ]);
-    expect(gsa.filterForDuplicates(exampleSpeakerList)).property('speaker3').to.eql([ 'rowing' ]);
+
+
+const fakeValidSchedule1 = {
+  id: 'foo',
+  type: 'convention',
+  nameFirst: 'Peter',
+  nameFast: 'Ramsing',
+  insititution: 'Hard Knocks',
+  adviser: 'Dr. Cool',
+  schedule: [
+    'event1ID',
+    'event2ID',
+    'event3ID',
+    'event4ID',
+    'event5ID'
+  ],
+  dietNotes: ['none'],
+  privacy: false,
+  privateNotes: false,
+  notes: `He's a bit odd.`
+}
+
+const fakeErrorSchedule1 = {
+  id: 'foo',
+  nameFirst: 'Peter',
+  nameFast: 'Ramsing',
+  insititution: 'Hard Knocks',
+  adviser: 'Dr. Cool',
+  schedule: [
+    'event1ID',
+    'event2ID',
+    'event3ID',
+    'event4ID',
+    'event5ID'
+  ],
+  dietNotes: ['none'],
+  privacy: false,
+  privateNotes: false,
+  notes: `He's a bit odd.`
+}
+
+describe('can validate attendee schedule', () => {
+  let validate = scheduler.scheduleTools.validateSchedule;
+  let validate1 = validate(fakeValidSchedule1);
+  let validate2 = validate(fakeErrorSchedule1);
+  it('should validate a high school convention', () => {
+    expect(validate1).to.equal(true);
+    expect(validate2).to.have.deep.property('valid', false);
   });
-
-  // it('should return correct speaker for duplicates', function() {
-  //   expect(gsa).to.have.deep.property('speaker1', [ 'skiing', 'running' ]);
-  //   expect(gsa).to.have.deep.property('speaker2', [ 'reading' ]);
-  //   expect(gsa).to.have.deep.property('speaker3', [ 'rowing' ]);
-  //   expect(gsa).to.have.deep.property('speaker4', [ 'cycling' ]);
-  //   expect(gsa).to.have.deep.property('speaker5', [ 'cooking' ]);
-  // });
 });
