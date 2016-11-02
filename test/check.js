@@ -144,7 +144,7 @@ const fakeValidSchedule1 = {
   privacy: false,
   privateNotes: false,
   notes: `He's a bit odd.`
-}
+};
 
 const fakeErrorSchedule1 = {
   id: 'foo',
@@ -163,7 +163,7 @@ const fakeErrorSchedule1 = {
   privacy: false,
   privateNotes: false,
   notes: `He's a bit odd.`
-}
+};
 
 describe('can validate attendee schedule', () => {
   let validate = scheduler.scheduleTools.validateSchedule;
