@@ -174,3 +174,23 @@ describe('can validate attendee schedule', () => {
     expect(validate2).to.have.deep.property('valid', false);
   });
 });
+
+const globalScheduleExample = [
+  {
+    sessionId: 101,
+    sessionName: 'Intro Session',
+    sessionType: 'breakout',
+    sessionSubject: 'cycling',
+    sessionStartTime: 1347791400000,
+    sessionEndTime: 1347791500000,
+    sessionCapacity: 60
+  }
+];
+
+
+describe('foo', () => {
+  let schedule = scheduler.generateSchedules(globalScheduleExample)
+  it('bar', () => {
+    
+  });
+});
