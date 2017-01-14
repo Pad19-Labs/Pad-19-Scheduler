@@ -80,7 +80,7 @@ const fakeValidSchedule1 = {
   insititution: 'Hard Knocks',
   adviser: 'Dr. Cool',
   schedule: [
-    'event1ID',
+    100,
     'event2ID',
     'event3ID',
     'event4ID',
@@ -115,15 +115,30 @@ const expect    = require('chai').expect;
 const scheduler = require('../index.js');
 
 const globalScheduleExample = [
-  {
-    sessionId: 101,
-    sessionName: 'Intro Session',
-    sessionType: 'breakout',
-    sessionSubject: 'cycling',
-    sessionStartTime: 1347791400000,
-    sessionEndTime: 1347791500000,
-    sessionCapacity: 60
-  }
+    {
+        sessionId: 100,
+        sessionPeriod: 0,
+        sessionName: 'Keynote',
+        sessionType: 'keynote',
+        sessionSubject: '',
+        sessionCapacity: 1200,
+    },
+    {
+        sessionId: 101,
+        sessionPeriod: 1,
+        sessionName: 'Cycling',
+        sessionType: 'breakout',
+        sessionSubject: 'cycling',
+        sessionCapacity: 60,
+    },
+    {
+        sessionId: 101,
+        sessionPeriod: 1,
+        sessionName: 'Intro Session',
+        sessionType: 'breakout',
+        sessionSubject: 'cycling',
+        sessionCapacity: 60,
+    }
 ];
 
 describe('surveyTools', () => {
@@ -173,6 +188,7 @@ describe('surveyTools', () => {
           expect(gsa.countDuplicates(exampleSpeakerList)).to.equal(2);
         });
     });
+
     describe('validate', () => {
         let validate = scheduler.scheduleTools.validateSchedule;
         let validate1 = validate(fakeValidSchedule1);
@@ -180,6 +196,17 @@ describe('surveyTools', () => {
         it('should validate a high school convention', () => {
           expect(validate1).to.equal(true);
           expect(validate2).to.have.deep.property('valid', false);
+        });
+    });
+
+    describe('generateSchedules', () => {
+        it('should return array of schedules', () => {
+            it('should give every student keynote sessions', () => {
+
+                
+
+
+            });
         });
     });
 });
