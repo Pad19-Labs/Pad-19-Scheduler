@@ -130,7 +130,7 @@ const globalScheduleExample = [
   },
 ];
 
-const masterSchedule = [
+const masterSchedule0 = [
   {
     sessionId: 100,
     attendees: [
@@ -219,9 +219,9 @@ describe('scheduleTools', () => {
   });
 
   describe('caniFit', () => {
-    let fullTest = scheduler.scheduleTools.caniFit(globalScheduleExample, masterSchedule, 401);
-    let thereIsSpaceTest = scheduler.scheduleTools.caniFit(globalScheduleExample, masterSchedule, 100);
-    let overBookingAllowanceTest = scheduler.scheduleTools.caniFit(globalScheduleExample, masterSchedule, 401, 2);
+    let fullTest = scheduler.scheduleTools.caniFit(globalScheduleExample, masterSchedule0, 401);
+    let thereIsSpaceTest = scheduler.scheduleTools.caniFit(globalScheduleExample, masterSchedule0, 100);
+    let overBookingAllowanceTest = scheduler.scheduleTools.caniFit(globalScheduleExample, masterSchedule0, 401, 2);
 
 
     it('should return false to add another attendee to full session', () => {
@@ -239,8 +239,8 @@ describe('scheduleTools', () => {
 
   describe('addToSession', () => {
     let testAttendee = 'attendee999';
-    let failTest = scheduler.scheduleTools.addToSession(globalScheduleExample, masterSchedule, 22222, testAttendee);
-    let goodTest = scheduler.scheduleTools.addToSession(globalScheduleExample, masterSchedule, 100, testAttendee);
+    let failTest = scheduler.scheduleTools.addToSession(globalScheduleExample, masterSchedule0, 22222, testAttendee);
+    let goodTest = scheduler.scheduleTools.addToSession(globalScheduleExample, masterSchedule0, 100, testAttendee);
 
     expect(failTest).to.equal('That is not a valid session.');
     let foundResult = _.find(goodTest, {'sessionId': 100});
