@@ -156,8 +156,39 @@ const globalScheduleExample = [
     sessionType: 'keynote',
     sessionSubject: '',
     sessionCapacity: 1200,
-  }
+  },
+  {
+    sessionId: 401,
+    sessionPeriod: 4,
+    sessionName: 'Special Tiny Session',
+    sessionType: 'breakout',
+    sessionSubject: 'cycling',
+    sessionCapacity: 2,
+  },
 ];
+
+const masterSchedule = [
+  {
+    sessionId: 100,
+    attendees: [
+      'attendee1',
+      'attendee2',
+      'attendee3',
+      'attendee4',
+      'attendee5',
+      'attendee6',
+      'attendee7',
+    ],
+  },
+  {
+    sessionId: 401,
+    attendees: [
+      'attendee1',
+      'attendee6',
+    ]
+  }
+]
+
 
 describe('surveyTools', () => {
   describe('totalResults', () => {
@@ -226,11 +257,25 @@ describe('scheduleTools', () => {
 
     it('should return an array', () => {
       expect(keynoteTest).to.be.instanceof(Array);
-    })
+    });
 
     it('should return all the keynotes present in the global schedule as an array', () => {
 
       expect(keynoteTest).to.deep.equal(keynoteArray);
     });
   });
-})
+
+  describe('caniFit', () => {
+    let fullTest = scheduler.scheduleTools.caniFit(globalScheduleExample, masterSchedule, 401);
+    let thereIsSpaceTest = scheduler.scheduleTools.caniFit(globalScheduleExample, masterSchedule, 100);
+
+    it('should return false to add another attendee to full session', () => {
+      expect(fullTest).to.equal(false);
+    });
+
+    it('should return true to add to a session wiht space', () => {
+      expect(thereIsSpaceTest).to.equal(true);
+    });
+
+  });
+});

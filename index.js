@@ -111,25 +111,15 @@ module.exports = {
       }
       console.log(keynotePeriods);
       return keynotePeriods;
-    }
+    },
+    caniFit: function(globalSchedule, masterScheduleSoFar, sessionId) {
+
+      let session = _.find(masterScheduleSoFar, { 'sessionId': sessionId });
+      let sessionCurrentCount = session.attendees.length;
+      let sessionDetails = _.find(globalSchedule, { 'sessionId': sessionId });
+      let sessionMax = sessionDetails.sessionCapacity;
+
+      return sessionCurrentCount < sessionMax;
+    },
   },
-  generateSchedules: function(globalSchedule, attendees) {
-
-    // set some temporary global sesssion info
-    let stubbedGlobalSchedule = [];
-    let foo = {};
-
-    for (var i = 0; i < globalSchedule.length; i++) {
-      stubbedGlobalSchedule.push(globalSchedule[i]);
-      console.log(stubbedGlobalSchedule);
-    }
-
-    foo.global = stubbedGlobalSchedule;
-
-    return foo;
-
-
-
-
-  }
 }
