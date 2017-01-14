@@ -76,7 +76,6 @@ module.exports = {
       };
       let _rve = returnValue.err;
 
-      // Event Type
       if (_s.type === undefined) {
         _rve.push(`There should be an event type.`);
       }
@@ -87,7 +86,6 @@ module.exports = {
         _rve.push(`Event type shouldn't be an empty string.`);
       }
 
-      // Name
       if (_s.nameFirst === undefined) {
         _rve.push(`The first and last name should be set.`);
       }
