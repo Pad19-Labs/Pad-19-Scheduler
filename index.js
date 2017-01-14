@@ -109,7 +109,6 @@ module.exports = {
         }
 
       }
-      console.log(keynotePeriods);
       return keynotePeriods;
     },
     caniFit: function(globalSchedule, masterScheduleSoFar, sessionId) {
