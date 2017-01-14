@@ -8,7 +8,8 @@ const exampleCareerArray = [
   'rowing',
 ]
 
-const exampleSurveyResults = [{
+const exampleSurveyResults = [
+  {
     uuid: 'attendee1',
     surveyResults: ['skiing', 'hiking', 'cycling']
   },
@@ -52,7 +53,8 @@ const exampleSurveyResultsTabulated = {
   }
 }
 
-const exampleSpeakerList = [{
+const exampleSpeakerList = [
+  {
     'speaker1': ['skiing', 'running']
   },
   {
@@ -122,7 +124,8 @@ const fakeErrorSchedule1 = {
 const expect = require('chai').expect;
 const scheduler = require('../index.js');
 
-const globalScheduleExample = [{
+const globalScheduleExample = [
+  {
     sessionId: 100,
     sessionPeriod: 0,
     sessionName: 'Keynote',
