@@ -104,17 +104,6 @@ const fakeErrorSchedule1 = {
 const expect    = require('chai').expect;
 const scheduler = require('../index.js');
 
-
-let test = scheduler.test;
-
-describe('initial test passes', () => {
-  it('should return value given', () => {
-    let testString = 'testing';
-    let testFunction = test(testString);
-    expect(testFunction).to.equal(testString);
-  });
-});
-
 const globalScheduleExample = [
   {
     sessionId: 101,
