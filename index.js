@@ -97,6 +97,17 @@ module.exports = {
         returnValue = true;
       }
       return returnValue;
+    },
+    returnKeynotes: function(globalSchedule) {
+      let keynotePeriods = []
+      for (var i = 0; i < globalSchedule.length; i++) {
+        if (globalSchedule[i].sessionType === 'keynote') {
+          keynotePeriods.push(globalSchedule[i].sessionId);
+        }
+
+      }
+      console.log(keynotePeriods);
+      return keynotePeriods;
     }
   },
   generateSchedules: function(globalSchedule, attendees) {

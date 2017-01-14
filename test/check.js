@@ -148,6 +148,14 @@ const globalScheduleExample = [
     sessionType: 'breakout',
     sessionSubject: 'cycling',
     sessionCapacity: 60,
+  },
+  {
+    sessionId: 400,
+    sessionPeriod: 4,
+    sessionName: 'Lunch Session',
+    sessionType: 'keynote',
+    sessionSubject: '',
+    sessionCapacity: 1200,
   }
 ];
 
@@ -198,8 +206,10 @@ describe('surveyTools', () => {
       expect(gsa.countDuplicates(exampleSpeakerList)).to.equal(2);
     });
   });
+});
 
-  describe('validate', () => {
+describe('scheduleTools', () => {
+  describe('validateSchedule', () => {
     let validate = scheduler.scheduleTools.validateSchedule;
     let validate1 = validate(fakeValidSchedule1);
     let validate2 = validate(fakeErrorSchedule1);
@@ -209,14 +219,18 @@ describe('surveyTools', () => {
     });
   });
 
-  describe('generateSchedules', () => {
-    it('should return array of schedules', () => {
-      it('should give every student keynote sessions', () => {
+  describe('returnKeynotes', () => {
+    let keynoteTest = scheduler.scheduleTools.returnKeynotes(globalScheduleExample);
 
+    let keynoteArray = [100, 400];
 
+    it('should return an array', () => {
+      expect(keynoteTest).to.be.instanceof(Array);
+    })
 
+    it('should return all the keynotes present in the global schedule as an array', () => {
 
-      });
+      expect(keynoteTest).to.deep.equal(keynoteArray);
     });
   });
-});
+})
