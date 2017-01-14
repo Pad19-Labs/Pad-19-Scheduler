@@ -15,5 +15,8 @@
     "chai": "^3.5.0",
     "mocha": "^3.1.2"
   },
-  "repository": "https://github.com/Pad-19/Pad-19-Scheduler.git"
+  "repository": "https://github.com/Pad-19/Pad-19-Scheduler.git",
+  "dependencies": {
+    "lodash": "^4.17.4"
+  }
 }

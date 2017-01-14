@@ -1,3 +1,5 @@
+import _ from 'lodash'
+
 module.exports = {
   surveyTools: {
     totalResults: function(surveyResults) {
