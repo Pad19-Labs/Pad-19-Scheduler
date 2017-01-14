@@ -84,59 +84,6 @@ const exampleSpeakerListAvailable = {
   }
 };
 
-const fakeValidSchedule1 = {
-  id: 'foo',
-  type: 'convention',
-  nameFirst: 'Peter',
-  nameFast: 'Ramsing',
-  institution: 'Hard Knocks',
-  adviser: 'Dr. Cool',
-  schedule: [
-    100,
-    'event2ID',
-    'event3ID',
-    'event4ID',
-    'event5ID'
-  ],
-  dietNotes: ['none'],
-  privacy: false,
-  privateNotes: false,
-  notes: `He's a bit odd.`
-};
-
-const fakeValidSchedule2 = {
-  id: 'foo',
-  type: 'convention',
-  nameFirst: 'Peter',
-  nameFast: 'Ramsing',
-  institution: 'Hard Knocks',
-  adviser: 'Dr. Cool',
-  schedule: '',
-  dietNotes: ['none'],
-  privacy: false,
-  privateNotes: false,
-  notes: `He's a bit odd.`
-};
-
-const fakeErrorSchedule1 = {
-  id: 'foo',
-  nameFirst: 'Peter',
-  nameFast: 'Ramsing',
-  institution: 'Hard Knocks',
-  adviser: 'Dr. Cool',
-  schedule: [
-    'event1ID',
-    'event2ID',
-    'event3ID',
-    'event4ID',
-    'event5ID'
-  ],
-  dietNotes: ['none'],
-  privacy: false,
-  privateNotes: false,
-  notes: `He's a bit odd.`
-};
-
 const expect = require('chai').expect;
 const scheduler = require('../index.js');
 
@@ -256,17 +203,6 @@ describe('surveyTools', () => {
 });
 
 describe('scheduleTools', () => {
-  describe('validateSchedule', () => {
-    let validate = scheduler.scheduleTools.validateSchedule;
-    let validate1 = validate(fakeValidSchedule1);
-    let validate2 = validate(fakeErrorSchedule1);
-    it('should validate a high school convention', () => {
-      expect(validate1).to.equal(true);
-      expect(validate2).to.have.deep.property('valid', false);
-      expect(validate2).to.have.deep.property('valid', false);
-    });
-  });
-
   describe('returnKeynotes', () => {
     let keynoteTest = scheduler.scheduleTools.returnKeynotes(globalScheduleExample);
 
