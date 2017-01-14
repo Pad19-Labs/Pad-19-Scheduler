@@ -46,7 +46,7 @@ module.exports = {
         }
         return duplicates;
       },
-      filterForDuplicates: function (speakersArray) {
+      filterForDuplicates: function(speakersArray) {
         let speakerAssignments = {};
 
         for (let i = 0; i < speakersArray.length; i++) {
@@ -65,7 +65,7 @@ module.exports = {
     }
   },
   scheduleTools: {
-    validateSchedule: function (schedule) {
+    validateSchedule: function(schedule) {
       let _s = schedule;
       let returnValue = {
         'valid': false,
