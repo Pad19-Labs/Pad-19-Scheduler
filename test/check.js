@@ -1,3 +1,5 @@
+const _ = require('lodash');
+
 const exampleCareerArray = [
   'skiing',
   'hiking',
