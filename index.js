@@ -99,6 +99,18 @@ module.exports = {
         return 'That is not a valid session.';
       }
     },
+    howManySessionPeriods: function(globalSchedule) {
+      let howMany;
+      let rawArray = [];
+
+      _.forEach(globalSchedule, (value) => {
+        rawArray.push(value['sessionPeriod']);
+      });
+      // This is +1 to return human readable number
+      howMany = _.max(rawArray) + 1;
+
+      return howMany;
+    },
   },
   makeMasterSchedule: function(surveyResults, globalSchedule) {
 

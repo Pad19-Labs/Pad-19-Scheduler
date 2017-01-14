@@ -303,6 +303,12 @@ describe('scheduleTools', () => {
       expect(student).to.equal(testAttendee);
     });
   });
+
+  describe('howManySessionPeriods', () => {
+    it('Should return how many Session Periods there are', () => {
+      let test = scheduler.scheduleTools.howManySessionPeriods(exampleGlobalSchedule);
+      expect(test).to.equal(7);
+    });
   });
 });
 
