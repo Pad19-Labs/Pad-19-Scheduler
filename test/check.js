@@ -1,3 +1,13 @@
+const exampleCareerArray = [
+    'skiing',
+    'hiking',
+    'cycling',
+    'reading',
+    'cooking',
+    'running',
+    'rowing',
+]
+
 const exampleSurveyResults = [
   {
     id: 'attendee1',
