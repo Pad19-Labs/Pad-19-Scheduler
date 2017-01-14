@@ -62,70 +62,6 @@ const exampleSpeakerListAvailable = {
   }
 };
 
-let expect    = require('chai').expect;
-
-let scheduler = require('../index.js');
-let test = scheduler.test;
-
-describe('initial test passes', () => {
-  it('should return value given', () => {
-    let testString = 'testing';
-    let testFunction = test(testString);
-    expect(testFunction).to.equal(testString);
-  });
-});
-
-describe('an array of survey results should return an object with each tabulated', () => {
-
-  it('should count the results', () => {
-    let totalResultsFunction = scheduler.surveyTools.totalResults(exampleSurveyResults);
-    expect(totalResultsFunction).to.equal(exampleSurveyResultsTabulated.totalResults);
-  });
-
-  it('should return count as a number', () => {
-    let totalResultsFunction = scheduler.surveyTools.totalResults(exampleSurveyResults);
-    expect(totalResultsFunction).to.be.a('number');
-  })
-});
-
-describe('return a count of each type of result', () => {
-  let trf = scheduler.surveyTools.tabulateResults(exampleSurveyResults);
-
-  it('should count how many people like one thing', () => {
-    expect(trf).to.have.deep.property('skiing', 2);
-    expect(trf).to.have.deep.property('hiking', 1);
-    expect(trf).to.have.deep.property('cycling', 4);
-    expect(trf).to.have.deep.property('reading', 2);
-    expect(trf).to.have.deep.property('cooking', 0);
-    expect(trf).to.have.deep.property('running', 2);
-    expect(trf).to.have.deep.property('other', 1);
-    expect(trf).to.have.deep.property('rowing', 1);
-  });
-
-  let trfRedable = scheduler.surveyTools.tabulateResults(exampleSurveyResults, true);
-  it('should return human readable numbers if asked for', () => {
-    expect(trfRedable).to.have.deep.property('skiing', 3);
-    expect(trfRedable).to.have.deep.property('hiking', 2);
-    expect(trfRedable).to.have.deep.property('cycling', 5);
-    expect(trfRedable).to.have.deep.property('reading', 3);
-    expect(trfRedable).to.have.deep.property('cooking', 1);
-    expect(trfRedable).to.have.deep.property('running', 3);
-    expect(trfRedable).to.have.deep.property('other', 2);
-    expect(trfRedable).to.have.deep.property('rowing', 2);
-  });
-
-});
-
-describe('should determine what speaker should speak if there is a duplicate', () => {
-  let gsa = scheduler.surveyTools.getSpeakerAssingments;
-
-  it('should count the duplicates', () => {
-    expect(gsa.countDuplicates(exampleSpeakerList)).to.equal(2);
-  });
-});
-
-
-
 const fakeValidSchedule1 = {
   id: 'foo',
   type: 'convention',
@@ -165,13 +101,17 @@ const fakeErrorSchedule1 = {
   notes: `He's a bit odd.`
 };
 
-describe('can validate attendee schedule', () => {
-  let validate = scheduler.scheduleTools.validateSchedule;
-  let validate1 = validate(fakeValidSchedule1);
-  let validate2 = validate(fakeErrorSchedule1);
-  it('should validate a high school convention', () => {
-    expect(validate1).to.equal(true);
-    expect(validate2).to.have.deep.property('valid', false);
+const expect    = require('chai').expect;
+const scheduler = require('../index.js');
+
+
+let test = scheduler.test;
+
+describe('initial test passes', () => {
+  it('should return value given', () => {
+    let testString = 'testing';
+    let testFunction = test(testString);
+    expect(testFunction).to.equal(testString);
   });
 });
 
@@ -187,10 +127,60 @@ const globalScheduleExample = [
   }
 ];
 
+describe('surveyTools', () => {
+    describe('totalResults', () => {
+        it('should count the results', () => {
+          let totalResultsFunction = scheduler.surveyTools.totalResults(exampleSurveyResults);
+          expect(totalResultsFunction).to.equal(exampleSurveyResultsTabulated.totalResults);
+        });
 
-describe('foo', () => {
-  let schedule = scheduler.generateSchedules(globalScheduleExample)
-  it('bar', () => {
-    
-  });
+        it('should return count as a number', () => {
+          let totalResultsFunction = scheduler.surveyTools.totalResults(exampleSurveyResults);
+          expect(totalResultsFunction).to.be.a('number');
+        });
+    });
+
+    describe('tabulateResults', () => {
+        let trf = scheduler.surveyTools.tabulateResults(exampleSurveyResults);
+
+        it('should count how many people like one thing', () => {
+          expect(trf).to.have.deep.property('skiing', 2);
+          expect(trf).to.have.deep.property('hiking', 1);
+          expect(trf).to.have.deep.property('cycling', 4);
+          expect(trf).to.have.deep.property('reading', 2);
+          expect(trf).to.have.deep.property('cooking', 0);
+          expect(trf).to.have.deep.property('running', 2);
+          expect(trf).to.have.deep.property('other', 1);
+          expect(trf).to.have.deep.property('rowing', 1);
+        });
+
+        let trfRedable = scheduler.surveyTools.tabulateResults(exampleSurveyResults, true);
+        it('should return human readable numbers if asked for', () => {
+          expect(trfRedable).to.have.deep.property('skiing', 3);
+          expect(trfRedable).to.have.deep.property('hiking', 2);
+          expect(trfRedable).to.have.deep.property('cycling', 5);
+          expect(trfRedable).to.have.deep.property('reading', 3);
+          expect(trfRedable).to.have.deep.property('cooking', 1);
+          expect(trfRedable).to.have.deep.property('running', 3);
+          expect(trfRedable).to.have.deep.property('other', 2);
+          expect(trfRedable).to.have.deep.property('rowing', 2);
+        });
+    });
+
+    describe('countDuplicates', () => {
+        let gsa = scheduler.surveyTools.getSpeakerAssingments;
+
+        it('should count the duplicates', () => {
+          expect(gsa.countDuplicates(exampleSpeakerList)).to.equal(2);
+        });
+    });
+    describe('validate', () => {
+        let validate = scheduler.scheduleTools.validateSchedule;
+        let validate1 = validate(fakeValidSchedule1);
+        let validate2 = validate(fakeErrorSchedule1);
+        it('should validate a high school convention', () => {
+          expect(validate1).to.equal(true);
+          expect(validate2).to.have.deep.property('valid', false);
+        });
+    });
 });
