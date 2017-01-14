@@ -291,12 +291,18 @@ describe('scheduleTools', () => {
     let failTest = scheduler.scheduleTools.addToSession(exampleGlobalSchedule, masterSchedule0, 22222, testAttendee);
     let goodTest = scheduler.scheduleTools.addToSession(exampleGlobalSchedule, masterSchedule0, 100, testAttendee);
 
-    expect(failTest).to.equal('That is not a valid session.');
-    let foundResult = _.find(goodTest, {'sessionId': 100});
-    foundResult = foundResult['attendees'];
-    let studentIndex = _.indexOf(foundResult, testAttendee);
-    let student = foundResult[studentIndex];
-    expect(student).to.equal(testAttendee);
+    it('Should fail to add to an invalid session', () => {
+      expect(failTest).to.equal('That is not a valid session.');
+    });
+
+    it('Should add to a valid session', () => {
+      let foundResult = _.find(goodTest, {'sessionId': 100});
+      foundResult = foundResult['attendees'];
+      let studentIndex = _.indexOf(foundResult, testAttendee);
+      let student = foundResult[studentIndex];
+      expect(student).to.equal(testAttendee);
+    });
+  });
   });
 });
 
