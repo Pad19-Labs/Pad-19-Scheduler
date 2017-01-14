@@ -87,7 +87,7 @@ const exampleSpeakerListAvailable = {
 const expect = require('chai').expect;
 const scheduler = require('../index.js');
 
-const globalScheduleExample = [
+const exampleGlobalSchedule = [
   {
     sessionId: 100,
     sessionPeriod: 0,
@@ -204,7 +204,7 @@ describe('surveyTools', () => {
 
 describe('scheduleTools', () => {
   describe('returnKeynotes', () => {
-    let keynoteTest = scheduler.scheduleTools.returnKeynotes(globalScheduleExample);
+    let keynoteTest = scheduler.scheduleTools.returnKeynotes(exampleGlobalSchedule);
 
     let keynoteArray = [
       {
@@ -236,9 +236,9 @@ describe('scheduleTools', () => {
   });
 
   describe('caniFit', () => {
-    let fullTest = scheduler.scheduleTools.caniFit(globalScheduleExample, masterSchedule0, 401);
-    let thereIsSpaceTest = scheduler.scheduleTools.caniFit(globalScheduleExample, masterSchedule0, 100);
-    let overBookingAllowanceTest = scheduler.scheduleTools.caniFit(globalScheduleExample, masterSchedule0, 401, 2);
+    let fullTest = scheduler.scheduleTools.caniFit(exampleGlobalSchedule, masterSchedule0, 401);
+    let thereIsSpaceTest = scheduler.scheduleTools.caniFit(exampleGlobalSchedule, masterSchedule0, 100);
+    let overBookingAllowanceTest = scheduler.scheduleTools.caniFit(exampleGlobalSchedule, masterSchedule0, 401, 2);
 
 
     it('should return false to add another attendee to full session', () => {
@@ -256,8 +256,8 @@ describe('scheduleTools', () => {
 
   describe('addToSession', () => {
     let testAttendee = 'attendee999';
-    let failTest = scheduler.scheduleTools.addToSession(globalScheduleExample, masterSchedule0, 22222, testAttendee);
-    let goodTest = scheduler.scheduleTools.addToSession(globalScheduleExample, masterSchedule0, 100, testAttendee);
+    let failTest = scheduler.scheduleTools.addToSession(exampleGlobalSchedule, masterSchedule0, 22222, testAttendee);
+    let goodTest = scheduler.scheduleTools.addToSession(exampleGlobalSchedule, masterSchedule0, 100, testAttendee);
 
     expect(failTest).to.equal('That is not a valid session.');
     let foundResult = _.find(goodTest, {'sessionId': 100});
