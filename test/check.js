@@ -206,7 +206,24 @@ describe('scheduleTools', () => {
   describe('returnKeynotes', () => {
     let keynoteTest = scheduler.scheduleTools.returnKeynotes(globalScheduleExample);
 
-    let keynoteArray = [100, 400];
+    let keynoteArray = [
+      {
+        sessionId: 100,
+        sessionPeriod: 0,
+        sessionName: 'Keynote',
+        sessionType: 'keynote',
+        sessionSubject: '',
+        sessionCapacity: 1200,
+      },
+      {
+        sessionId: 400,
+        sessionPeriod: 4,
+        sessionName: 'Lunch Session',
+        sessionType: 'keynote',
+        sessionSubject: '',
+        sessionCapacity: 1200,
+      },
+    ];
 
     it('should return an array', () => {
       expect(keynoteTest).to.be.instanceof(Array);

@@ -69,14 +69,14 @@ module.exports = {
   },
   scheduleTools: {
     returnKeynotes: function(globalSchedule) {
-      let keynotePeriods = []
+      let keynotes = []
       for (var i = 0; i < globalSchedule.length; i++) {
         if (globalSchedule[i].sessionType === 'keynote') {
-          keynotePeriods.push(globalSchedule[i].sessionId);
+          keynotes.push(globalSchedule[i]);
         }
 
       }
-      return keynotePeriods;
+      return keynotes;
     },
     caniFit: function(globalSchedule, masterScheduleSoFar, sessionId, overBooking = 0) {
 
