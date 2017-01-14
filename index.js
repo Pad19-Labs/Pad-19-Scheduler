@@ -118,5 +118,17 @@ module.exports = {
 
       return sessionCurrentCount < sessionMax;
     },
+    addToSession: function(globalSchedule, masterScheduleSoFar, sessionId, studentId) {
+
+      let sessionIndex = _.findIndex(globalSchedule, { 'sessionId': sessionId });
+
+      if (sessionIndex != -1) {
+        let foo = masterScheduleSoFar[sessionIndex]['attendees'];
+        foo.push(studentId);
+        return masterScheduleSoFar
+      } else {
+        return 'That is not a valid session.';
+      }
+    },
   },
 }

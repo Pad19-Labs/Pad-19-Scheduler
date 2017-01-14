@@ -300,4 +300,17 @@ describe('scheduleTools', () => {
       expect(overBookingAllowanceTest).to.equal(true);
     });
   });
+
+  describe('addToSession', () => {
+    let testAttendee = 'attendee999';
+    let failTest = scheduler.scheduleTools.addToSession(globalScheduleExample, masterSchedule, 22222, testAttendee);
+    let goodTest = scheduler.scheduleTools.addToSession(globalScheduleExample, masterSchedule, 100, testAttendee);
+
+    expect(failTest).to.equal('That is not a valid session.');
+    let foundResult = _.find(goodTest, {'sessionId': 100});
+    foundResult = foundResult['attendees'];
+    let studentIndex = _.indexOf(foundResult, testAttendee);
+    let student = foundResult[studentIndex];
+    expect(student).to.equal(testAttendee);
+  });
 });
