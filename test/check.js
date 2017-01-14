@@ -10,31 +10,31 @@ const exampleCareerArray = [
 
 const exampleSurveyResults = [
   {
-    id: 'attendee1',
+    uuid: 'attendee1',
     surveyResults: [ 'skiing', 'hiking', 'cycling' ]
   },
   {
-    id: 'attendee2',
+    uuid: 'attendee2',
     surveyResults: [ 'reading', 'cooking', 'cycling' ]
   },
   {
-    id: 'attendee3',
+    uuid: 'attendee3',
     surveyResults: [ 'running', 'reading', 'other' ]
   },
   {
-    id: 'attendee4',
+    uuid: 'attendee4',
     surveyResults: [ 'rowing', 'running', 'cycling' ]
   },
   {
-    id: 'attendee5',
+    uuid: 'attendee5',
     surveyResults: [ 'skiing', 'running', 'rowing' ]
   },
   {
-    id: 'attendee6',
+    uuid: 'attendee6',
     surveyResults: [ 'other', 'hiking', 'cycling' ]
   },
   {
-    id: 'attendee7',
+    uuid: 'attendee7',
     surveyResults: [ 'reading', 'skiing', 'cycling']
   }
 ];
