@@ -157,7 +157,7 @@ describe('surveyTools', () => {
     });
 
     describe('countDuplicates', () => {
-        let gsa = scheduler.surveyTools.getSpeakerAssingments;
+        let gsa = scheduler.surveyTools.getSpeakerAssignments;
 
         it('should count the duplicates', () => {
           expect(gsa.countDuplicates(exampleSpeakerList)).to.equal(2);

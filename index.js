@@ -24,7 +24,7 @@ module.exports = {
       }
       return counts;
     },
-    getSpeakerAssingments: {
+    getSpeakerAssignments: {
       countDuplicates: function(speakersArray) {
 
         let duplicates = 0;
