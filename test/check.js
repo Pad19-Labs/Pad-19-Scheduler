@@ -283,6 +283,8 @@ describe('scheduleTools', () => {
   describe('caniFit', () => {
     let fullTest = scheduler.scheduleTools.caniFit(globalScheduleExample, masterSchedule, 401);
     let thereIsSpaceTest = scheduler.scheduleTools.caniFit(globalScheduleExample, masterSchedule, 100);
+    let overBookingAllowanceTest = scheduler.scheduleTools.caniFit(globalScheduleExample, masterSchedule, 401, 2);
+
 
     it('should return false to add another attendee to full session', () => {
       expect(fullTest).to.equal(false);
@@ -292,5 +294,8 @@ describe('scheduleTools', () => {
       expect(thereIsSpaceTest).to.equal(true);
     });
 
+    it('should allow for a configuration that allows over-booking', () => {
+      expect(overBookingAllowanceTest).to.equal(true);
+    });
   });
 });

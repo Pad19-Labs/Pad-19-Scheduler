@@ -109,12 +109,12 @@ module.exports = {
       }
       return keynotePeriods;
     },
-    caniFit: function(globalSchedule, masterScheduleSoFar, sessionId) {
+    caniFit: function(globalSchedule, masterScheduleSoFar, sessionId, overBooking = 0) {
 
       let session = _.find(masterScheduleSoFar, { 'sessionId': sessionId });
       let sessionCurrentCount = session.attendees.length;
       let sessionDetails = _.find(globalSchedule, { 'sessionId': sessionId });
-      let sessionMax = sessionDetails.sessionCapacity;
+      let sessionMax = sessionDetails.sessionCapacity + overBooking;
 
       return sessionCurrentCount < sessionMax;
     },
