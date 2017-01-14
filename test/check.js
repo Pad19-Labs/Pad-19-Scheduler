@@ -113,6 +113,22 @@ const exampleGlobalSchedule = [
     sessionCapacity: 60,
   },
   {
+    sessionId: 201,
+    sessionPeriod: 2,
+    sessionName: 'Intro Session',
+    sessionType: 'breakout',
+    sessionSubject: 'cycling',
+    sessionCapacity: 60,
+  },
+  {
+    sessionId: 301,
+    sessionPeriod: 3,
+    sessionName: 'Intro Session',
+    sessionType: 'breakout',
+    sessionSubject: 'cycling',
+    sessionCapacity: 60,
+  },
+  {
     sessionId: 400,
     sessionPeriod: 4,
     sessionName: 'Lunch Session',
@@ -127,6 +143,22 @@ const exampleGlobalSchedule = [
     sessionType: 'breakout',
     sessionSubject: 'cycling',
     sessionCapacity: 2,
+  },
+  {
+    sessionId: 501,
+    sessionPeriod: 5,
+    sessionName: 'Intro Session',
+    sessionType: 'breakout',
+    sessionSubject: 'cycling',
+    sessionCapacity: 60,
+  },
+  {
+    sessionId: 601,
+    sessionPeriod: 6,
+    sessionName: 'Intro Session',
+    sessionType: 'breakout',
+    sessionSubject: 'cycling',
+    sessionCapacity: 60,
   },
 ];
 
