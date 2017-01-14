@@ -267,3 +267,11 @@ describe('scheduleTools', () => {
     expect(student).to.equal(testAttendee);
   });
 });
+
+describe('makeMasterSchedule', () => {
+  it('test', () => {
+    let test = scheduler.makeMasterSchedule(exampleSurveyResults, exampleGlobalSchedule);
+    console.log(test);
+    expect(true).to.equal(true);
+  });
+});
