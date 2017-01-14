@@ -1,4 +1,5 @@
-import _ from 'lodash'
+const _ = require('lodash');
+
 
 module.exports = {
   surveyTools: {
