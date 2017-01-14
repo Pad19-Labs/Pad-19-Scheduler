@@ -102,6 +102,20 @@ const fakeValidSchedule1 = {
   notes: `He's a bit odd.`
 };
 
+const fakeValidSchedule2 = {
+  id: 'foo',
+  type: 'convention',
+  nameFirst: 'Peter',
+  nameFast: 'Ramsing',
+  insititution: 'Hard Knocks',
+  adviser: 'Dr. Cool',
+  schedule: '',
+  dietNotes: ['none'],
+  privacy: false,
+  privateNotes: false,
+  notes: `He's a bit odd.`
+};
+
 const fakeErrorSchedule1 = {
   id: 'foo',
   nameFirst: 'Peter',
@@ -246,6 +260,7 @@ describe('scheduleTools', () => {
     let validate2 = validate(fakeErrorSchedule1);
     it('should validate a high school convention', () => {
       expect(validate1).to.equal(true);
+      expect(validate2).to.have.deep.property('valid', false);
       expect(validate2).to.have.deep.property('valid', false);
     });
   });
