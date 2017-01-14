@@ -4,7 +4,8 @@
   "description": "A tool for generating schedules based on data.",
   "main": "index.js",
   "scripts": {
-    "test": "mocha test/*.js"
+    "test": "mocha test/*.js",
+    "test-with-coverage": "nyc mocha"
   },
   "keywords": [
     "schedules"
@@ -13,7 +14,8 @@
   "license": "MIT",
   "devDependencies": {
     "chai": "^3.5.0",
-    "mocha": "^3.1.2"
+    "mocha": "^3.1.2",
+    "nyc": "^10.0.0"
   },
   "repository": "https://github.com/Pad-19/Pad-19-Scheduler.git",
   "dependencies": {
