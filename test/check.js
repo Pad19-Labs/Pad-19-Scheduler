@@ -87,7 +87,7 @@ const fakeValidSchedule1 = {
   type: 'convention',
   nameFirst: 'Peter',
   nameFast: 'Ramsing',
-  insititution: 'Hard Knocks',
+  institution: 'Hard Knocks',
   adviser: 'Dr. Cool',
   schedule: [
     100,
@@ -107,7 +107,7 @@ const fakeValidSchedule2 = {
   type: 'convention',
   nameFirst: 'Peter',
   nameFast: 'Ramsing',
-  insititution: 'Hard Knocks',
+  institution: 'Hard Knocks',
   adviser: 'Dr. Cool',
   schedule: '',
   dietNotes: ['none'],
@@ -120,7 +120,7 @@ const fakeErrorSchedule1 = {
   id: 'foo',
   nameFirst: 'Peter',
   nameFast: 'Ramsing',
-  insititution: 'Hard Knocks',
+  institution: 'Hard Knocks',
   adviser: 'Dr. Cool',
   schedule: [
     'event1ID',
