@@ -203,7 +203,7 @@ const masterSchedule = [
       'attendee6',
     ]
   }
-]
+];
 
 
 describe('surveyTools', () => {
