@@ -2,7 +2,7 @@
   "name": "pad-19-scheduler",
   "version": "0.0.0",
   "description": "A tool for generating schedules based on data.",
-  "main": "index.js",
+  "main": "lib/_index.js",
   "scripts": {
     "test": "mocha test/*.js",
     "testing": "mocha test/*.js --watch",

@@ -85,7 +85,7 @@ const exampleSpeakerListAvailable = {
 };
 
 const expect = require('chai').expect;
-const scheduler = require('../index.js');
+const scheduler = require('../lib/_index.js');
 
 const exampleGlobalSchedule = [
   {
@@ -314,7 +314,7 @@ describe('scheduleTools', () => {
 
 describe('makeMasterSchedule', () => {
   it('test', () => {
-    let test = scheduler.makeMasterSchedule(exampleSurveyResults, exampleGlobalSchedule);
+    let test = scheduler.makeSchedule.makeMasterSchedule(exampleSurveyResults, exampleGlobalSchedule);
     console.log(test);
     expect(true).to.equal(true);
   });
