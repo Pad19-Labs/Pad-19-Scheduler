@@ -1,4 +1,4 @@
-<div style="width: 100%; text-align: center;">
+<div style="width: 100% text-align: center">
   <h1>A tool for creating schedules based on data.</h1>
   <h3>This is created for the Pad 19 Application.</h3>
 </div>

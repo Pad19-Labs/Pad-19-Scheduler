@@ -1,4 +1,4 @@
-const _ = require('lodash');
+const _ = require('lodash')
 
 const exampleCareerArray = [
   'skiing',
@@ -39,7 +39,7 @@ const exampleSurveyResults = [
     uuid: 'attendee7',
     surveyResults: ['reading', 'skiing', 'cycling']
   }
-];
+]
 
 const exampleSurveyResultsTabulated = {
   totalResults: 7,
@@ -71,7 +71,7 @@ const exampleSpeakerList = [
   {
     'speaker5': ['cycling', 'cooking']
   }
-];
+]
 
 const exampleSpeakerListAvailable = {
   duplicates: 2,
@@ -82,10 +82,10 @@ const exampleSpeakerListAvailable = {
     speaker4: ['cycling'],
     speaker5: ['cooking']
   }
-};
+}
 
-const expect = require('chai').expect;
-const scheduler = require('../lib/_index.js');
+const expect = require('chai').expect
+const scheduler = require('../lib/_index.js')
 
 const exampleGlobalSchedule = [
   {
@@ -160,7 +160,7 @@ const exampleGlobalSchedule = [
     sessionSubject: 'cycling',
     sessionCapacity: 60,
   },
-];
+]
 
 const masterSchedule0 = [
   {
@@ -182,61 +182,61 @@ const masterSchedule0 = [
       'attendee6',
     ]
   }
-];
+]
 
 
 describe('surveyTools', () => {
   describe('totalResults', () => {
     it('should count the results', () => {
-      let totalResultsFunction = scheduler.surveyTools.totalResults(exampleSurveyResults);
-      expect(totalResultsFunction).to.equal(exampleSurveyResultsTabulated.totalResults);
-    });
+      let totalResultsFunction = scheduler.surveyTools.totalResults(exampleSurveyResults)
+      expect(totalResultsFunction).to.equal(exampleSurveyResultsTabulated.totalResults)
+    })
 
     it('should return count as a number', () => {
-      let totalResultsFunction = scheduler.surveyTools.totalResults(exampleSurveyResults);
-      expect(totalResultsFunction).to.be.a('number');
-    });
-  });
+      let totalResultsFunction = scheduler.surveyTools.totalResults(exampleSurveyResults)
+      expect(totalResultsFunction).to.be.a('number')
+    })
+  })
 
   describe('tabulateResults', () => {
-    let trf = scheduler.surveyTools.tabulateResults(exampleSurveyResults);
+    let trf = scheduler.surveyTools.tabulateResults(exampleSurveyResults)
 
     it('should count how many people like one thing', () => {
-      expect(trf).to.have.deep.property('skiing', 2);
-      expect(trf).to.have.deep.property('hiking', 1);
-      expect(trf).to.have.deep.property('cycling', 4);
-      expect(trf).to.have.deep.property('reading', 2);
-      expect(trf).to.have.deep.property('cooking', 0);
-      expect(trf).to.have.deep.property('running', 2);
-      expect(trf).to.have.deep.property('other', 1);
-      expect(trf).to.have.deep.property('rowing', 1);
-    });
+      expect(trf).to.have.deep.property('skiing', 2)
+      expect(trf).to.have.deep.property('hiking', 1)
+      expect(trf).to.have.deep.property('cycling', 4)
+      expect(trf).to.have.deep.property('reading', 2)
+      expect(trf).to.have.deep.property('cooking', 0)
+      expect(trf).to.have.deep.property('running', 2)
+      expect(trf).to.have.deep.property('other', 1)
+      expect(trf).to.have.deep.property('rowing', 1)
+    })
 
-    let trfRedable = scheduler.surveyTools.tabulateResults(exampleSurveyResults, true);
+    let trfRedable = scheduler.surveyTools.tabulateResults(exampleSurveyResults, true)
     it('should return human readable numbers if asked for', () => {
-      expect(trfRedable).to.have.deep.property('skiing', 3);
-      expect(trfRedable).to.have.deep.property('hiking', 2);
-      expect(trfRedable).to.have.deep.property('cycling', 5);
-      expect(trfRedable).to.have.deep.property('reading', 3);
-      expect(trfRedable).to.have.deep.property('cooking', 1);
-      expect(trfRedable).to.have.deep.property('running', 3);
-      expect(trfRedable).to.have.deep.property('other', 2);
-      expect(trfRedable).to.have.deep.property('rowing', 2);
-    });
-  });
+      expect(trfRedable).to.have.deep.property('skiing', 3)
+      expect(trfRedable).to.have.deep.property('hiking', 2)
+      expect(trfRedable).to.have.deep.property('cycling', 5)
+      expect(trfRedable).to.have.deep.property('reading', 3)
+      expect(trfRedable).to.have.deep.property('cooking', 1)
+      expect(trfRedable).to.have.deep.property('running', 3)
+      expect(trfRedable).to.have.deep.property('other', 2)
+      expect(trfRedable).to.have.deep.property('rowing', 2)
+    })
+  })
 
   describe('countDuplicates', () => {
-    let gsa = scheduler.surveyTools.getSpeakerAssignments;
+    let gsa = scheduler.surveyTools.getSpeakerAssignments
 
     it('should count the duplicates', () => {
-      expect(gsa.countDuplicates(exampleSpeakerList)).to.equal(2);
-    });
-  });
-});
+      expect(gsa.countDuplicates(exampleSpeakerList)).to.equal(2)
+    })
+  })
+})
 
 describe('scheduleTools', () => {
   describe('returnKeynotes', () => {
-    let keynoteTest = scheduler.scheduleTools.returnKeynotes(exampleGlobalSchedule);
+    let keynoteTest = scheduler.scheduleTools.returnKeynotes(exampleGlobalSchedule)
 
     let keynoteArray = [
       {
@@ -255,67 +255,67 @@ describe('scheduleTools', () => {
         sessionSubject: '',
         sessionCapacity: 1200,
       },
-    ];
+    ]
 
     it('should return an array', () => {
-      expect(keynoteTest).to.be.instanceof(Array);
-    });
+      expect(keynoteTest).to.be.instanceof(Array)
+    })
 
     it('should return all the keynotes present in the global schedule as an array', () => {
 
-      expect(keynoteTest).to.deep.equal(keynoteArray);
-    });
-  });
+      expect(keynoteTest).to.deep.equal(keynoteArray)
+    })
+  })
 
   describe('caniFit', () => {
-    let fullTest = scheduler.scheduleTools.caniFit(exampleGlobalSchedule, masterSchedule0, 401);
-    let thereIsSpaceTest = scheduler.scheduleTools.caniFit(exampleGlobalSchedule, masterSchedule0, 100);
-    let overBookingAllowanceTest = scheduler.scheduleTools.caniFit(exampleGlobalSchedule, masterSchedule0, 401, 2);
+    let fullTest = scheduler.scheduleTools.caniFit(exampleGlobalSchedule, masterSchedule0, 401)
+    let thereIsSpaceTest = scheduler.scheduleTools.caniFit(exampleGlobalSchedule, masterSchedule0, 100)
+    let overBookingAllowanceTest = scheduler.scheduleTools.caniFit(exampleGlobalSchedule, masterSchedule0, 401, 2)
 
 
     it('should return false to add another attendee to full session', () => {
-      expect(fullTest).to.equal(false);
-    });
+      expect(fullTest).to.equal(false)
+    })
 
     it('should return true to add to a session wiht space', () => {
-      expect(thereIsSpaceTest).to.equal(true);
-    });
+      expect(thereIsSpaceTest).to.equal(true)
+    })
 
     it('should allow for a configuration that allows over-booking', () => {
-      expect(overBookingAllowanceTest).to.equal(true);
-    });
-  });
+      expect(overBookingAllowanceTest).to.equal(true)
+    })
+  })
 
   describe('addToSession', () => {
-    let testAttendee = 'attendee999';
-    let failTest = scheduler.scheduleTools.addToSession(exampleGlobalSchedule, masterSchedule0, 22222, testAttendee);
-    let goodTest = scheduler.scheduleTools.addToSession(exampleGlobalSchedule, masterSchedule0, 100, testAttendee);
+    let testAttendee = 'attendee999'
+    let failTest = scheduler.scheduleTools.addToSession(exampleGlobalSchedule, masterSchedule0, 22222, testAttendee)
+    let goodTest = scheduler.scheduleTools.addToSession(exampleGlobalSchedule, masterSchedule0, 100, testAttendee)
 
     it('Should fail to add to an invalid session', () => {
-      expect(failTest).to.equal('That is not a valid session.');
-    });
+      expect(failTest).to.equal('That is not a valid session.')
+    })
 
     it('Should add to a valid session', () => {
-      let foundResult = _.find(goodTest, {'sessionId': 100});
-      foundResult = foundResult['attendees'];
-      let studentIndex = _.indexOf(foundResult, testAttendee);
-      let student = foundResult[studentIndex];
-      expect(student).to.equal(testAttendee);
-    });
-  });
+      let foundResult = _.find(goodTest, {'sessionId': 100})
+      foundResult = foundResult['attendees']
+      let studentIndex = _.indexOf(foundResult, testAttendee)
+      let student = foundResult[studentIndex]
+      expect(student).to.equal(testAttendee)
+    })
+  })
 
   describe('howManySessionPeriods', () => {
     it('Should return how many Session Periods there are', () => {
-      let test = scheduler.scheduleTools.howManySessionPeriods(exampleGlobalSchedule);
-      expect(test).to.equal(7);
-    });
-  });
-});
+      let test = scheduler.scheduleTools.howManySessionPeriods(exampleGlobalSchedule)
+      expect(test).to.equal(7)
+    })
+  })
+})
 
 describe('makeMasterSchedule', () => {
   it('test', () => {
-    let test = scheduler.makeSchedule.makeMasterSchedule(exampleSurveyResults, exampleGlobalSchedule);
-    console.log(test);
-    expect(true).to.equal(true);
-  });
-});
+    let test = scheduler.makeSchedule.makeMasterSchedule(exampleSurveyResults, exampleGlobalSchedule)
+    console.log(test)
+    expect(true).to.equal(true)
+  })
+})
