@@ -4,7 +4,7 @@
   "description": "A tool for generating schedules based on data.",
   "main": "lib/_index.js",
   "scripts": {
-    "test": "mocha test/*.js && ava",
+    "test": "ava",
     "testing": "mocha test/*.js --watch",
     "test-with-coverage": "nyc mocha"
   },
