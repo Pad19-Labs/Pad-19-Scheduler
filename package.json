@@ -5,8 +5,8 @@
   "main": "lib/_index.js",
   "scripts": {
     "test": "ava",
-    "testing": "mocha test/*.js --watch",
-    "test-with-coverage": "nyc mocha"
+    "testing": "ava --verbose --watch",
+    "test-with-coverage": "nyc ava"
   },
   "keywords": [
     "schedules"
