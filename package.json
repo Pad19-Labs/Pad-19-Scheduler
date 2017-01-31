@@ -4,7 +4,7 @@
   "description": "A tool for generating schedules based on data.",
   "main": "lib/_index.js",
   "scripts": {
-    "test": "mocha test/*.js",
+    "test": "mocha test/*.js && ava",
     "testing": "mocha test/*.js --watch",
     "test-with-coverage": "nyc mocha"
   },
@@ -14,6 +14,7 @@
   "author": "Peter Ramsing <hi@peterramsing.com> (http://peter.coffee)",
   "license": "MIT",
   "devDependencies": {
+    "ava": "^0.17.0",
     "chai": "^3.5.0",
     "mocha": "^3.1.2",
     "nyc": "^10.0.0"
