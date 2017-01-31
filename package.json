@@ -4,9 +4,9 @@
   "description": "A tool for generating schedules based on data.",
   "main": "lib/_index.js",
   "scripts": {
-    "test": "mocha test/*.js",
-    "testing": "mocha test/*.js --watch",
-    "test-with-coverage": "nyc mocha"
+    "test": "ava",
+    "testing": "ava --verbose --watch",
+    "test-with-coverage": "nyc ava"
   },
   "keywords": [
     "schedules"
@@ -14,8 +14,7 @@
   "author": "Peter Ramsing <hi@peterramsing.com> (http://peter.coffee)",
   "license": "MIT",
   "devDependencies": {
-    "chai": "^3.5.0",
-    "mocha": "^3.1.2",
+    "ava": "^0.17.0",
     "nyc": "^10.0.0"
   },
   "repository": "https://github.com/Pad-19/Pad-19-Scheduler.git",

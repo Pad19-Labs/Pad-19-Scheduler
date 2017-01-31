@@ -1,53 +1,54 @@
-const expect = require('chai').expect
+import _ from 'lodash'
+import test from 'ava'
 const scheduler = require('../lib/_index.js')
-
 const data = require('./data/_index.js')
 
-describe('surveyTools', () => {
-  describe('totalResults', () => {
-    it('should count the results', () => {
-      let totalResultsFunction = scheduler.surveyTools.totalResults(data.exampleSurveyResults)
-      expect(totalResultsFunction).to.equal(data.exampleSurveyResultsTabulated.totalResults)
-    })
+test.beforeEach(t => {
+  t.context.data = data
+})
 
-    it('should return count as a number', () => {
-      let totalResultsFunction = scheduler.surveyTools.totalResults(data.exampleSurveyResults)
-      expect(totalResultsFunction).to.be.a('number')
-    })
-  })
+test('totalResults', t => {
+  let test = scheduler.surveyTools.totalResults(data.exampleSurveyResults)
 
-  describe('tabulateResults', () => {
-    let trf = scheduler.surveyTools.tabulateResults(data.exampleSurveyResults)
+  t.is(
+    test,
+    t.context.data.exampleSurveyResultsTabulated.totalResults)
+})
 
-    it('should count how many people like one thing', () => {
-      expect(trf).to.have.deep.property('skiing', 2)
-      expect(trf).to.have.deep.property('hiking', 1)
-      expect(trf).to.have.deep.property('cycling', 4)
-      expect(trf).to.have.deep.property('reading', 2)
-      expect(trf).to.have.deep.property('cooking', 0)
-      expect(trf).to.have.deep.property('running', 2)
-      expect(trf).to.have.deep.property('other', 1)
-      expect(trf).to.have.deep.property('rowing', 1)
-    })
+test('tabulateResults', t => {
+  let test = scheduler.surveyTools.tabulateResults(t.context.data.exampleSurveyResults)
 
-    let trfRedable = scheduler.surveyTools.tabulateResults(data.exampleSurveyResults, true)
-    it('should return human readable numbers if asked for', () => {
-      expect(trfRedable).to.have.deep.property('skiing', 3)
-      expect(trfRedable).to.have.deep.property('hiking', 2)
-      expect(trfRedable).to.have.deep.property('cycling', 5)
-      expect(trfRedable).to.have.deep.property('reading', 3)
-      expect(trfRedable).to.have.deep.property('cooking', 1)
-      expect(trfRedable).to.have.deep.property('running', 3)
-      expect(trfRedable).to.have.deep.property('other', 2)
-      expect(trfRedable).to.have.deep.property('rowing', 2)
-    })
-  })
+  let result = {
+    skiing : 2,
+    hiking : 1,
+    cycling : 4,
+    reading : 2,
+    cooking : 0,
+    running : 2,
+    other : 1,
+    rowing : 1
+  }
 
-  describe('countDuplicates', () => {
-    let gsa = scheduler.surveyTools.getSpeakerAssignments
+  let trfTest = scheduler.surveyTools.tabulateResults(data.exampleSurveyResults, true)
 
-    it('should count the duplicates', () => {
-      expect(gsa.countDuplicates(data.exampleSpeakerList)).to.equal(2)
-    })
-  })
+  let trfResult = {
+    skiing : 3,
+    hiking : 2,
+    cycling : 5,
+    reading : 3,
+    cooking : 1,
+    running : 3,
+    other : 2,
+    rowing : 2
+  }
+
+  t.deepEqual(test, result)
+  t.truthy(trfTest)
+  t.deepEqual(trfTest, trfResult)
+})
+
+test('countDuplicates', t => {
+  let gsa = scheduler.surveyTools.getSpeakerAssignments
+
+  t.is(gsa.countDuplicates(t.context.data.exampleSpeakerList), 2)
 })
