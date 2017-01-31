@@ -1,84 +1,64 @@
-const _ = require('lodash')
+import _ from 'lodash'
+import test from 'ava'
 
-const expect = require('chai').expect
 const scheduler = require('../lib/_index.js')
-
 const data = require('./data/_index.js')
 
-describe('scheduleTools', () => {
-  describe('returnKeynotes', () => {
-    let keynoteTest = scheduler.scheduleTools.returnKeynotes(data.exampleGlobalSchedule)
+test.beforeEach(t => {
+  t.context.data = data
+})
 
-    let keynoteArray = [
-      {
-        sessionId: 100,
-        sessionPeriod: 0,
-        sessionName: 'Keynote',
-        sessionType: 'keynote',
-        sessionSubject: '',
-        sessionCapacity: 1200,
-      },
-      {
-        sessionId: 400,
-        sessionPeriod: 4,
-        sessionName: 'Lunch Session',
-        sessionType: 'keynote',
-        sessionSubject: '',
-        sessionCapacity: 1200,
-      },
-    ]
+test('returnKeynotes', t => {
+  let keynoteTest = scheduler.scheduleTools.returnKeynotes(t.context.data.exampleGlobalSchedule)
 
-    it('should return an array', () => {
-      expect(keynoteTest).to.be.instanceof(Array)
-    })
+  let keynoteArray = [
+    {
+      sessionId: 100,
+      sessionPeriod: 0,
+      sessionName: 'Keynote',
+      sessionType: 'keynote',
+      sessionSubject: '',
+      sessionCapacity: 1200,
+    },
+    {
+      sessionId: 400,
+      sessionPeriod: 4,
+      sessionName: 'Lunch Session',
+      sessionType: 'keynote',
+      sessionSubject: '',
+      sessionCapacity: 1200,
+    },
+  ]
 
-    it('should return all the keynotes present in the global schedule as an array', () => {
+  t.deepEqual(keynoteTest, keynoteArray)
+})
 
-      expect(keynoteTest).to.deep.equal(keynoteArray)
-    })
-  })
+test("canIfit", t=>{
+  let fullTest = scheduler.scheduleTools.caniFit(t.context.data.exampleGlobalSchedule, t.context.data.masterSchedule0, 401)
+  let thereIsSpaceTest = scheduler.scheduleTools.caniFit(t.context.data.exampleGlobalSchedule, t.context.data.masterSchedule0, 100)
+  let overBookingAllowanceTest = scheduler.scheduleTools.caniFit(t.context.data.exampleGlobalSchedule, t.context.data.masterSchedule0, 401, 2)
 
-  describe('caniFit', () => {
-    let fullTest = scheduler.scheduleTools.caniFit(data.exampleGlobalSchedule, data.masterSchedule0, 401)
-    let thereIsSpaceTest = scheduler.scheduleTools.caniFit(data.exampleGlobalSchedule, data.masterSchedule0, 100)
-    let overBookingAllowanceTest = scheduler.scheduleTools.caniFit(data.exampleGlobalSchedule, data.masterSchedule0, 401, 2)
+  t.is(fullTest, false)
+  t.is(thereIsSpaceTest, true)
+  t.is(overBookingAllowanceTest, true)
+})
 
+test('addToSession', t => {
+  let testAttendee = 'attendee999'
+  let failTest = scheduler.scheduleTools.addToSession(t.context.data.exampleGlobalSchedule, t.context.data.masterSchedule0, 22222, testAttendee)
+  let goodTest = scheduler.scheduleTools.addToSession(t.context.data.exampleGlobalSchedule, t.context.data.masterSchedule0, 100, testAttendee)
 
-    it('should return false to add another attendee to full session', () => {
-      expect(fullTest).to.equal(false)
-    })
+  let foundResult = _.find(goodTest, {'sessionId': 100})
+  foundResult = foundResult['attendees']
+  let studentIndex = _.indexOf(foundResult, testAttendee)
+  let student = foundResult[studentIndex]
 
-    it('should return true to add to a session wiht space', () => {
-      expect(thereIsSpaceTest).to.equal(true)
-    })
+  t.is(failTest, 'That is not a valid session.')
+  t.is(student, testAttendee)
+})
 
-    it('should allow for a configuration that allows over-booking', () => {
-      expect(overBookingAllowanceTest).to.equal(true)
-    })
-  })
+test('howManySessionPeriods', t => {
+  let test = scheduler.scheduleTools.howManySessionPeriods(data.exampleGlobalSchedule)
 
-  describe('addToSession', () => {
-    let testAttendee = 'attendee999'
-    let failTest = scheduler.scheduleTools.addToSession(data.exampleGlobalSchedule, data.masterSchedule0, 22222, testAttendee)
-    let goodTest = scheduler.scheduleTools.addToSession(data.exampleGlobalSchedule, data.masterSchedule0, 100, testAttendee)
-
-    it('Should fail to add to an invalid session', () => {
-      expect(failTest).to.equal('That is not a valid session.')
-    })
-
-    it('Should add to a valid session', () => {
-      let foundResult = _.find(goodTest, {'sessionId': 100})
-      foundResult = foundResult['attendees']
-      let studentIndex = _.indexOf(foundResult, testAttendee)
-      let student = foundResult[studentIndex]
-      expect(student).to.equal(testAttendee)
-    })
-  })
-
-  describe('howManySessionPeriods', () => {
-    it('Should return how many Session Periods there are', () => {
-      let test = scheduler.scheduleTools.howManySessionPeriods(data.exampleGlobalSchedule)
-      expect(test).to.equal(7)
-    })
-  })
+  t.is(test, 7)
 })
