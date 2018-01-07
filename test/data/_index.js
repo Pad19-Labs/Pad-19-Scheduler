@@ -1,5 +1,5 @@
 module.exports = {
-  "exampleCareerArray": [
+  'exampleCareerArray': [
     'skiing',
     'hiking',
     'cycling',
@@ -8,7 +8,7 @@ module.exports = {
     'running',
     'rowing',
   ],
-  "exampleSurveyResults": [
+  'exampleSurveyResults': [
     {
       uuid: 'attendee1',
       surveyResults: ['skiing', 'hiking', 'cycling']
@@ -38,7 +38,7 @@ module.exports = {
       surveyResults: ['reading', 'skiing', 'cycling']
     }
   ],
-  "exampleSurveyResultsTabulated": {
+  'exampleSurveyResultsTabulated': {
     totalResults: 7,
     individualResults: {
       skiing: 3,

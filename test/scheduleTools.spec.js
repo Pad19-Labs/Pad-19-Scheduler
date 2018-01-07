@@ -33,7 +33,7 @@ test('returnKeynotes', t => {
   t.deepEqual(keynoteTest, keynoteArray)
 })
 
-test("canIfit", t=>{
+test('canIfit', t=>{
   let fullTest = scheduler.scheduleTools.caniFit(t.context.data.exampleGlobalSchedule, t.context.data.masterSchedule0, 401)
   let thereIsSpaceTest = scheduler.scheduleTools.caniFit(t.context.data.exampleGlobalSchedule, t.context.data.masterSchedule0, 100)
   let overBookingAllowanceTest = scheduler.scheduleTools.caniFit(t.context.data.exampleGlobalSchedule, t.context.data.masterSchedule0, 401, 2)
