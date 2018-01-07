@@ -14,8 +14,8 @@
   "author": "Peter Ramsing <hi@peterramsing.com> (http://peter.coffee)",
   "license": "MIT",
   "devDependencies": {
-    "ava": "^0.17.0",
-    "nyc": "^10.0.0"
+    "ava": "^0.24.0",
+    "nyc": "^11.4.1"
   },
   "repository": "https://github.com/Pad-19/Pad-19-Scheduler.git",
   "dependencies": {
